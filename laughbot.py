@@ -1,17 +1,13 @@
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
 
 
-load_dotenv()
-# Get the API token from the .env file.
 tk = open('token','r')
-DISCORD_TOKEN = tk.read()
+DISCORD_TOKEN = tk.read().replace('\n','').replace('\r','')
 tk.close()
 
-intents = discord.Intents().all()
-client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='>',intents=intents)
+client = discord.Client()
+bot = commands.Bot(command_prefix='>')
 
 ffmpeg_options = {
     'options': '-vn'
